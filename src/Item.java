@@ -1,10 +1,12 @@
 
 public class Item {
+	private String id;
 	private String name;
 	private Type_of_package type;
 	private String info;
-	public Item(String name, Type_of_package type, String info)
+	public Item(String id, String name, Type_of_package type, String info)
 	{
+		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.info = info;
@@ -20,5 +22,9 @@ public class Item {
 					+ "Time_to_pick_up: " + type.time_to_pick_up() + "\n"
 					+ "Description: " + info + "\n";
 		return temp;
+	}
+	public boolean equals(String id)
+	{
+		return this.id == id;
 	}
 }
