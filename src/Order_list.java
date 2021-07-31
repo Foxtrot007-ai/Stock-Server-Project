@@ -22,9 +22,19 @@ public class Order_list {
 	{
 		return order.add(o);
 	}
-	public boolean delete_item(String number)
+	public boolean delete_item(String id)
 	{
-		return order.remove(number);
+		int iter = 0;
+		while(iter < order.size())
+		{
+			if(order.get(iter).equals(id))
+			{
+				order.remove(iter);
+				return true;
+			}
+		}
+		return false;
+		
 	}
 	
 }

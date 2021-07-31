@@ -27,4 +27,14 @@ public class Item {
 	{
 		return this.id == id;
 	}
+	
+	public String get_id()
+	{
+		return id;
+	}
+	
+	public String get_name()
+	{
+		return name;
+	}
 }
