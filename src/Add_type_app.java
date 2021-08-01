@@ -5,8 +5,8 @@ import java.awt.event.*;
 import java.util.Random;
 
 
-public class  Add_type_app  implements ActionListener{
-		private JPanel f;
+public class  Add_type_app{
+		private JFrame f;
 		
 		private JButton b1;
 		private JButton b2;
@@ -33,7 +33,7 @@ public class  Add_type_app  implements ActionListener{
 		{
 			
 			
-			f = new JPanel();
+			f = new JFrame();
 	        
 			TF_name = new JTextField();  
 			TF_name.setBounds(100,50, 100,20);  
@@ -62,19 +62,20 @@ public class  Add_type_app  implements ActionListener{
 			{
 				public void actionPerformed(ActionEvent evt) {
 						
-			
+					f.setVisible(false);
 							
 				}
 			});
 			
 			b2 = new JButton("Dodaj");
 			b2.setBounds(150,150,100, 40);
-			b2.setEnabled(false);
+			b2.setEnabled(true);
 			b2.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent evt) {
 					
-							
+					f.setVisible(false);
+					
 				}
 			});
 		
@@ -89,12 +90,10 @@ public class  Add_type_app  implements ActionListener{
 		
 		
 		
-		public void actionPerformed(ActionEvent e)
+		public JFrame get_frame()
 		{
+			return f;
 			
-			f.setVisible(true);
-			b1.setEnabled(true);
-			b2.setEnabled(false);
 							
 		}
 	
