@@ -8,16 +8,16 @@ public class main {
 	        Add_type_app a = new Add_type_app();
 	        JFrame f = a.get_frame();
 	        Scanner reader = new Scanner(System.in); 
+	        f.setVisible(true);
 	        
-	        
-	        while(true)
+	        /*while(true)
 	        {
 	        	System.out.println("Enter a number: ");
 		        int n = reader.nextInt(); 
 		        if(n == 1)
 	        	f.setVisible(true);
 	        	
-	        }
+	        }*/
 	        
 	        
 	 }
