@@ -38,9 +38,9 @@ public class  Add_type_app{
 			f.setLocation(800, 200);
 			return f;
 		}*/
-		public  Add_type_app()
+		public  Add_type_app(List_of_types t)
 		{
-			types = new List_of_types();
+			types = t;
 			
 			f = new JFrame();
 			
@@ -161,8 +161,7 @@ public class  Add_type_app{
 		public JFrame get_frame()
 		{
 			return f;
-			
-							
+						
 		}
 	
 	}
