@@ -9,13 +9,14 @@ import java.awt.event.*;
 import java.util.Random;
 
 
-public class  Add_item_app{
+public class  Add_item_app implements ActionListener{
 		private JFrame f;
-		private int J_y;
+		
 		private JButton b1;
 		private JButton b2;
-		private boolean ended;
 		
+		
+		private int J_y;
 		private int JLabel_height;
 		private int JLabel_width;
 		
@@ -30,12 +31,14 @@ public class  Add_item_app{
 		private JTextField TF_name;
 		private JTextField TF_info;
 		
-		private JList Lst_types;
-		
-		
-		
+		private JList<String>  Lst_types;
 		private List_of_items items;
 		private List_of_types types;
+		private DefaultListModel<String> l1;
+		
+		private Id_gen_item gen;
+		
+		private boolean ended;
 		/*public JPanel show_window()
 		{
 			f.setLocation(800, 200);
@@ -46,8 +49,10 @@ public class  Add_item_app{
 			items = i;
 			types = t;
 			
-			f = new JFrame();
+			gen = new Id_gen_item();
 			
+			f = new JFrame();
+			l1 = new DefaultListModel<>(); 
 			JTextField_height = 20;
 			JTextField_width = 150;
 			JLabel_height = 20;
@@ -67,8 +72,10 @@ public class  Add_item_app{
 			L_types.setBounds(J_y,55, JLabel_width, JLabel_height);
 			L_types.setText("Select type: ");
 			
-			Lst_types = new JList(types.get_array_of_names());
-			Lst_types.setBounds(J_y,80, JTextField_width, JTextField_height+60);  
+			
+			Lst_types = new JList<>(l1); 
+			Lst_types.setBounds(J_y,80, JTextField_width, JTextField_height+60); 
+			
 			//list
 			L_info = new JLabel();  
 			L_info.setBounds(J_y,165, JLabel_width + 10, JLabel_height);  
@@ -85,7 +92,7 @@ public class  Add_item_app{
 			b1.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent evt) {
-						
+					ended = false;
 					f.setVisible(false);
 							
 				}
@@ -97,22 +104,20 @@ public class  Add_item_app{
 			b2.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent evt) {
-					
-					/*if(!TF_name.getText().equals("")
-						&& !TF_x.getText().equals("")
-						&& !TF_y.getText().equals("")
-						&& !TF_z.getText().equals("")
-						&& !TF_weight.getText().equals(""))
+					System.out.println("Enter a number: " + types.get_name(0));
+					if(!TF_name.getText().equals("")
+						&& !TF_info.getText().equals("")
+						&& !Lst_types.isSelectionEmpty())
 					{
 						Item temp 
-						= new Item(TF_name.getText(),
-								);
-						
+						= new Item(gen.next_id(),TF_name.getText(),types.get_type(Lst_types.getSelectedIndex()),
+								TF_info.getText());
+						items.add_item(temp);
 						f.setVisible(false);
 						//System.out.println(types.get_name(0));
 					}else {
 						JOptionPane.showMessageDialog(f, "Some fields are empty.");
-					}*/
+					}
 					
 					
 					
@@ -140,17 +145,28 @@ public class  Add_item_app{
 		{
 			return ended;
 		}
+		
 		public void update_list()
 		{
-			Lst_types = new JList(types.get_array_of_names());
-			SwingUtilities.updateComponentTreeUI(f);
+			l1.clear();
+			for(int i = 0; i < types.size(); i++)
+			{
+				l1.add(i,types.get_name(i));
+				
+			}
+			
 		}
 		
 		public JFrame get_frame()
 		{
-			return f;
+			return f;						
+		}
+		public void actionPerformed(ActionEvent e)
+		{
+			ended = false;
+			update_list();
+			f.setVisible(true);
 			
-							
 		}
 	
 	}

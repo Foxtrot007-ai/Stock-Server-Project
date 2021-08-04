@@ -29,6 +29,12 @@ public class List_of_types {
 		return false;
 		
 	}
+	
+	public Type_of_package get_type(int i)
+	{
+		return types.get(i);
+	}
+	
 	public int size()
 	{
 		return types.size();
@@ -39,14 +45,6 @@ public class List_of_types {
 		return types.get(i).toString();
 	}
 	
-	public String[] get_array_of_names()
-	{
-		String[] temp = new String[types.size()];
-		for(int i = 0; i < types.size(); i++)
-		{
-			temp[i] = get_name(i);
-		}
-		return temp;
-	}
+	
 
 }

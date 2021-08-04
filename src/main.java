@@ -18,13 +18,11 @@ public class main {
 	        while(true)
 	        {
 	        	
-	        	a.update_list();
+	        	
 	        	System.out.println("Enter a number: ");
 		        int n = reader.nextInt(); 
 		        if(n == 1)
-		        f1.invalidate();
-		        f1.validate();
-		        f1.repaint();
+		        
 	        	f1.setVisible(true);
 		        if(n == 2)
 		        f2.setVisible(true);
