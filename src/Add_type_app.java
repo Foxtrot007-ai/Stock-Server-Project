@@ -23,6 +23,9 @@ public class  Add_type_app{
 		private JLabel L_z;
 		private JLabel L_weight;
 		
+		private JButton b_t;
+		private JButton b_i;
+		
 		private int JTextField_height;
 		private int JTextField_width;
 		
@@ -32,18 +35,21 @@ public class  Add_type_app{
 		private JTextField TF_z;
 		private JTextField TF_weight;
 		
+		
+		
 		private List_of_types types;
 		/*public JPanel show_window()
 		{
 			f.setLocation(800, 200);
 			return f;
 		}*/
-		public  Add_type_app(List_of_types t)
+		public  Add_type_app(List_of_types t, JButton b_type, JButton b_item)
 		{
 			types = t;
 			
 			f = new JFrame();
-			
+			b_t = b_type;
+			b_i = b_item;
 			JTextField_height = 20;
 			JTextField_width = 150;
 			JLabel_height = 20;
