@@ -20,6 +20,7 @@ public class  Main_server_app{
 		private Add_item_app app_i;
 		private JFrame items_app;
 		private JFrame types_app;
+		private ButtonManager b_manager;
 		
 		
 
@@ -38,8 +39,8 @@ public class  Main_server_app{
 		 	app_t = new Add_type_app(types);
 	        app_i = new Add_item_app(types,items);
 	        
-	        JFrame items_app = app_i.get_frame();
-	        JFrame types_app = app_t.get_frame();
+	        
+	        
 			
 			b1 = new JButton("Dodaj nowy typ");
 			b1.setBounds(100,250,100, 100);
@@ -47,9 +48,11 @@ public class  Main_server_app{
 			b1.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent evt) {
-							
-					types_app.setVisible(true);
-												
+					
+					app_t.actionPerformed(evt);
+					b_manager.select_operation(app_t.operation);
+					b_manager.start();
+					
 				}
 			});
 			
@@ -65,7 +68,7 @@ public class  Main_server_app{
 
 				}
 			});
-		
+			b_manager = new ButtonManager(b1, b2);
 			
 			f.add(b1);
 			f.add(b2);    

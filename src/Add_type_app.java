@@ -8,7 +8,7 @@ import java.awt.event.*;
 import java.util.Random;
 
 
-public class  Add_type_app{
+public class  Add_type_app implements ActionListener{
 		private JFrame f;
 		private int J_y;
 		private JButton b1;
@@ -23,8 +23,7 @@ public class  Add_type_app{
 		private JLabel L_z;
 		private JLabel L_weight;
 		
-		private JButton b_t;
-		private JButton b_i;
+		
 		
 		private int JTextField_height;
 		private int JTextField_width;
@@ -35,6 +34,7 @@ public class  Add_type_app{
 		private JTextField TF_z;
 		private JTextField TF_weight;
 		
+		protected boolean operation;
 		
 		
 		private List_of_types types;
@@ -43,13 +43,11 @@ public class  Add_type_app{
 			f.setLocation(800, 200);
 			return f;
 		}*/
-		public  Add_type_app(List_of_types t, JButton b_type, JButton b_item)
+		public  Add_type_app(List_of_types t)
 		{
 			types = t;
 			
 			f = new JFrame();
-			b_t = b_type;
-			b_i = b_item;
 			JTextField_height = 20;
 			JTextField_width = 150;
 			JLabel_height = 20;
@@ -105,6 +103,7 @@ public class  Add_type_app{
 			{
 				public void actionPerformed(ActionEvent evt) {
 						
+					operation = false;
 					f.setVisible(false);
 							
 				}
@@ -130,6 +129,7 @@ public class  Add_type_app{
 								Float.parseFloat(TF_z.getText()),
 								Float.parseFloat(TF_weight.getText()));
 						types.add_type(temp);
+						operation = false;
 						f.setVisible(false);
 						//System.out.println(types.get_name(0));
 					}else {
@@ -168,6 +168,13 @@ public class  Add_type_app{
 		{
 			return f;
 						
+		}
+		
+		public void actionPerformed(ActionEvent e)
+		{
+			operation = false;
+			f.setVisible(true);
+			
 		}
 	
 	}
