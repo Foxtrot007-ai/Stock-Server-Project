@@ -50,7 +50,8 @@ public class  Main_server_app{
 				public void actionPerformed(ActionEvent evt) {
 					
 					app_t.actionPerformed(evt);
-					b_manager.select_operation(app_t.operation);
+					b_manager = new ButtonManager(b1,b2);
+					b_manager.select_operation(app_t.get_info());
 					b_manager.start();
 					
 				}

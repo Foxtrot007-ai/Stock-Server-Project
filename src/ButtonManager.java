@@ -1,44 +1,44 @@
 import javax.swing.JButton;
 
 public class ButtonManager extends Thread{
-	private JButton buttons[];
+	private JButton b_type;
+	private JButton b_item;
 	private int size;
-	private boolean operation;
+	private BooleanWrapper operation;
 	public ButtonManager(JButton type, JButton item)
 	{
-		buttons = new JButton[2];
-		buttons[0] = type;
-		buttons[1] = item;
+		
+		b_type = type;
+		b_item = item;
 		size = 2;
 	}
 	
 	public void run()
 	{
 		disable_buttons();
-		while(operation)
+		
+		while(!operation.getValue())
 		{
 			System.out.println("operation: " + operation + "\n");
 		}
 		enable_buttons();
+		return;
+		
 	}
 	
 	private void enable_buttons()
 	{
-		for(int i=0; i<size;i++)
-		{
-			buttons[i].enable();
-		}
+		b_type.setEnabled(true);
+		b_item.setEnabled(true);
 	}
 	
 	private void disable_buttons()
 	{
-		for(int i=0; i<size;i++)
-		{
-			buttons[i].disable();
-		}
+		b_type.setEnabled(false);
+		b_item.setEnabled(false);
 	}
 	
-	public void select_operation(boolean operation)
+	public void select_operation(BooleanWrapper operation)
 	{
 		this.operation = operation;
 	}

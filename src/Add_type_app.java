@@ -34,7 +34,7 @@ public class  Add_type_app implements ActionListener{
 		private JTextField TF_z;
 		private JTextField TF_weight;
 		
-		protected boolean operation;
+		private BooleanWrapper operation;
 		
 		
 		private List_of_types types;
@@ -46,6 +46,7 @@ public class  Add_type_app implements ActionListener{
 		public  Add_type_app(List_of_types t)
 		{
 			types = t;
+			operation = new BooleanWrapper();
 			
 			f = new JFrame();
 			JTextField_height = 20;
@@ -103,7 +104,7 @@ public class  Add_type_app implements ActionListener{
 			{
 				public void actionPerformed(ActionEvent evt) {
 						
-					operation = false;
+					operation.setTrue();;
 					f.setVisible(false);
 							
 				}
@@ -129,7 +130,7 @@ public class  Add_type_app implements ActionListener{
 								Float.parseFloat(TF_z.getText()),
 								Float.parseFloat(TF_weight.getText()));
 						types.add_type(temp);
-						operation = false;
+						operation.setTrue();
 						f.setVisible(false);
 						//System.out.println(types.get_name(0));
 					}else {
@@ -172,9 +173,14 @@ public class  Add_type_app implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e)
 		{
-			operation = false;
+			operation.setFalse();
 			f.setVisible(true);
 			
+		}
+		
+		public BooleanWrapper get_info()
+		{
+			return operation;
 		}
 	
 	}
