@@ -10,35 +10,28 @@ import java.util.Random;
 
 
 public class  Add_item_app implements ActionListener{
-		private JFrame f;
-		
+		private JFrame f;	
 		private JButton b1;
 		private JButton b2;
-		
-		
-		private int J_y;
-		private int JLabel_height;
-		private int JLabel_width;
-		
 		private JLabel L_name;
 		private JLabel L_info;
 		private JLabel L_types;
+		private JTextField TF_name;
+		private JTextField TF_info;
+		private JList<String>  Lst_types;
 		
-		
+		private int J_y;
+		private int JLabel_height;
+		private int JLabel_width;	
 		private int JTextField_height;
 		private int JTextField_width;
 		
-		private JTextField TF_name;
-		private JTextField TF_info;
-		
-		private JList<String>  Lst_types;
 		private List_of_items items;
 		private List_of_types types;
-		private DefaultListModel<String> l1;
-		
+		private DefaultListModel<String> l1;	
 		private Id_gen_item gen;
 		
-		private boolean ended;
+		private BooleanWrapper is_operation_finished;
 		/*public JPanel show_window()
 		{
 			f.setLocation(800, 200);
@@ -48,7 +41,7 @@ public class  Add_item_app implements ActionListener{
 		{
 			items = i;
 			types = t;
-			
+			is_operation_finished = new BooleanWrapper();
 			gen = new Id_gen_item();
 			
 			f = new JFrame();
@@ -91,10 +84,9 @@ public class  Add_item_app implements ActionListener{
 			b1.setEnabled(true);
 			b1.addActionListener(new ActionListener()
 			{
-				public void actionPerformed(ActionEvent evt) {
-					ended = false;
+				public void actionPerformed(ActionEvent evt) {	
 					f.setVisible(false);
-							
+					is_operation_finished.setTrue();
 				}
 			});
 			
@@ -114,13 +106,11 @@ public class  Add_item_app implements ActionListener{
 								TF_info.getText());
 						items.add_item(temp);
 						f.setVisible(false);
-						//System.out.println(types.get_name(0));
+						is_operation_finished.setTrue();
+						
 					}else {
 						JOptionPane.showMessageDialog(f, "Some fields are empty.");
 					}
-					
-					
-					
 				}
 			});
 		
@@ -141,9 +131,10 @@ public class  Add_item_app implements ActionListener{
 			f.setVisible(false);
 			
 		}
-		public boolean if_operation_ended()
+		
+		public BooleanWrapper get_info()
 		{
-			return ended;
+			return is_operation_finished;
 		}
 		
 		public void update_list()
@@ -157,13 +148,14 @@ public class  Add_item_app implements ActionListener{
 			
 		}
 		
-		public JFrame get_frame()
+		/*public JFrame get_frame() full app concept
 		{
 			return f;						
-		}
+		}*/
+		
 		public void actionPerformed(ActionEvent e)
 		{
-			ended = false;
+			is_operation_finished.setFalse();
 			update_list();
 			f.setVisible(true);
 			
