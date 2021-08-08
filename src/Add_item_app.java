@@ -85,7 +85,7 @@ public class  Add_item_app implements ActionListener{
 			b1.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent evt) {	
-					f.setVisible(false);
+					f.dispose();
 					is_operation_finished.setTrue();
 				}
 			});
@@ -105,7 +105,7 @@ public class  Add_item_app implements ActionListener{
 						= new Item(gen.next_id(),TF_name.getText(),types.get_type(Lst_types.getSelectedIndex()),
 								TF_info.getText());
 						items.add_item(temp);
-						f.setVisible(false);
+						f.dispose();
 						is_operation_finished.setTrue();
 						
 					}else {
