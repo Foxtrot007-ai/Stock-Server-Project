@@ -42,7 +42,7 @@ public class  Type_manager_app implements ActionListener{
 			
 			
 			Lst_types = new JList<>(l1); 
-			Lst_types.setBounds(55,80, 150, 80); 
+			Lst_types.setBounds(40,50, 200, 200); 
 			
 			
 			

@@ -18,14 +18,15 @@ public class  Main_server_app{
 		private JButton b4;
 		private JButton b5;
 		
-		private JFrame items_app;
-		private JFrame types_app;
+		
 		
 		private List_of_types types;
 		private List_of_items items;
 		
 		private Add_type_app app_t;
 		private Add_item_app app_i;
+		
+		private Type_manager_app manager_t;
 		
 		private ButtonManager b_manager;
 		
@@ -39,12 +40,13 @@ public class  Main_server_app{
 			
 			types = new List_of_types();
 		 	items = new List_of_items();
+		 	
 		 	app_t = new Add_type_app(types);
 	        app_i = new Add_item_app(types,items);
 	        
+	        manager_t = new Type_manager_app(types,items);
 	        
 	        
-			
 			b1 = new JButton("Dodaj nowy typ");
 			b1.setBounds(70,400,200, 100);
 			b1.setEnabled(true);
@@ -53,7 +55,7 @@ public class  Main_server_app{
 				public void actionPerformed(ActionEvent evt) {
 					
 					app_t.actionPerformed(evt);
-					b_manager = new ButtonManager(b1,b2);
+					b_manager = new ButtonManager(b1,b2,b3,b4,b5);
 					b_manager.select_operation(app_t.get_info());
 					b_manager.start();
 					
@@ -69,7 +71,7 @@ public class  Main_server_app{
 					
 					
 					app_i.actionPerformed(evt);
-					b_manager = new ButtonManager(b1,b2);
+					b_manager = new ButtonManager(b1,b2,b3,b4,b5);
 					b_manager.select_operation(app_i.get_info());
 					b_manager.start();
 					
@@ -89,19 +91,22 @@ public class  Main_server_app{
 
 				}
 			});
-			b4 = new JButton("Zarzadzaj przedmiotami");
+			b4 = new JButton("Zarzadzaj typami");
 			b4.setBounds(70,250,200, 100);
 			b4.setEnabled(true);
 			b4.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent evt) {
 					
-					
+					manager_t.actionPerformed(evt);
+					b_manager = new ButtonManager(b1,b2,b3,b4,b5);
+					b_manager.select_operation(manager_t.get_info());
+					b_manager.start();
 					
 
 				}
 			});
-			b5 = new JButton("Zarzadzaj typami");
+			b5 = new JButton("Zarzadzaj przedmiotami");
 			b5.setBounds(320,250,200, 100);
 			b5.setEnabled(true);
 			b5.addActionListener(new ActionListener()
@@ -113,7 +118,7 @@ public class  Main_server_app{
 
 				}
 			});
-			b_manager = new ButtonManager(b1, b2);
+			b_manager = new ButtonManager(b1, b2,b3,b4,b5);
 			
 			f.add(b1);
 			f.add(b2);
