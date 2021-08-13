@@ -17,6 +17,7 @@ public class  Type_manager_app implements ActionListener{
 		private JList<String>  Lst_types;
 		
 		private List_of_types types;
+		private List_of_items items;
 		
 		private DefaultListModel<String> l1;	
 		
@@ -31,6 +32,7 @@ public class  Type_manager_app implements ActionListener{
 		{
 			
 			types = t;
+			items = i;
 			is_operation_finished = new BooleanWrapper();
 			
 			
@@ -64,7 +66,16 @@ public class  Type_manager_app implements ActionListener{
 			b2.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent evt) {
-					
+					Type_of_package selected = t.get_type(Lst_types.getSelectedIndex());
+					if(items.check_if_type_is_used(selected))
+					{
+						JOptionPane.showMessageDialog(f, "Type is used by some item");
+					}else{
+						t.delete_item(selected);
+						f.setVisible(false);
+						is_operation_finished.setTrue();
+					}
+						
 				}
 			});
 		

@@ -24,4 +24,26 @@ public class Three_dimensional_parameters {
 	{
 		return z;
 	}
+	
+	@Override
+	public boolean equals(Object obj) 
+	{
+        if (this == obj)
+            return true;
+        
+        if (obj == null)
+            return false;
+        
+        if (getClass() != obj.getClass())
+        	return false;
+        
+        Three_dimensional_parameters other = (Three_dimensional_parameters) obj;
+        
+		if(x != other.get_x()
+		&& y != other.get_y()
+		&& z != other.get_z())
+			return false;
+		
+		return true;
+	}
 }

@@ -11,9 +11,9 @@ public class Item {
 		this.type = type;
 		this.info = info;
 	}
-	public Three_dimensional_parameters get_object()
+	public Type_of_package get_type()
 	{
-		return type.get_form();
+		return type;
 	}
 	public String toString()
 	{
@@ -23,10 +23,21 @@ public class Item {
 					+ "Description: " + info + "\n";
 		return temp;
 	}
-	public boolean equals(String id)
-	{
-		return this.id == id;
-	}
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Item other = (Item) obj;
+    
+        if(!id.equals(other.get_id()))
+        return false;
+        
+        return true;
+    }
 	
 	public String get_id()
 	{

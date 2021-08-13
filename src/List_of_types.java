@@ -15,16 +15,17 @@ public class List_of_types {
 		return types.add(o);
 	}
 	
-	public boolean delete_item(String id)
+	public boolean delete_item(Type_of_package t)
 	{
 		int iter = 0;
 		while(iter < types.size())
 		{
-			if(types.get(iter).equals(id))
+			if(types.get(iter).equals(t))
 			{
 				types.remove(iter);
 				return true;
 			}
+			iter++;
 		}
 		return false;
 		
@@ -45,6 +46,9 @@ public class List_of_types {
 		return types.get(i).toString();
 	}
 	
-	
+	public boolean contains(Type_of_package t)
+	{
+		return types.contains(t);
+	}
 
 }

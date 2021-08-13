@@ -121,7 +121,8 @@ public class  Add_type_app implements ActionListener{
 						&& !TF_x.getText().equals("")
 						&& !TF_y.getText().equals("")
 						&& !TF_z.getText().equals("")
-						&& !TF_weight.getText().equals(""))
+						&& !TF_weight.getText().equals("")
+						)
 					{
 						Type_of_package temp 
 						= new Type_of_package(TF_name.getText(),
@@ -129,9 +130,14 @@ public class  Add_type_app implements ActionListener{
 								Float.parseFloat(TF_y.getText()),
 								Float.parseFloat(TF_z.getText()),
 								Float.parseFloat(TF_weight.getText()));
-						types.add_type(temp);
-						is_operation_finished.setTrue();
-						f.setVisible(false);
+						if(!types.contains(temp))
+						{
+							types.add_type(temp);
+							is_operation_finished.setTrue();
+							f.setVisible(false);
+						} else JOptionPane.showMessageDialog(f, "This type already exists.");
+						
+						
 						//System.out.println(types.get_name(0));
 					}else {
 						JOptionPane.showMessageDialog(f, "Some fields are empty.");

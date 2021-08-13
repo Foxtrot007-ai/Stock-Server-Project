@@ -36,5 +36,15 @@ public class List_of_items {
 	{
 		return items.get(i).get_name();
 	}
+	
+	public boolean check_if_type_is_used(Type_of_package t)
+	{
+		for(int i = 0; i < items.size(); i++)
+		{
+			if(items.get(i).get_type().equals(t))
+				return true;
+		}
+		return false;
+	}
 
 }
