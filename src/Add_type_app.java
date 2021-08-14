@@ -147,7 +147,13 @@ public class  Add_type_app implements ActionListener{
 					
 				}
 			});
-		
+			f.addWindowListener(new java.awt.event.WindowAdapter() {
+			    @Override
+			    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+			    	f.setVisible(false);
+					is_operation_finished.setTrue();
+			    }
+			});
 			
 			f.add(b1);
 			f.add(b2);    

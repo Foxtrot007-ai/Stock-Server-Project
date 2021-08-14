@@ -17,16 +17,23 @@ public class List_of_items {
 		int iter = 0;
 		while(iter < items.size())
 		{
-			if(items.get(iter).equals(id))
+			if(items.get(iter).get_id().equals(id))
 			{
 				items.remove(iter);
 				return true;
 			}
+			iter++;
 		}
 		return false;
 		
 	}
 	
+
+	
+	public int size()
+	{
+		return items.size();
+	}
 	public String get_id(int i)
 	{
 		return items.get(i).get_id();

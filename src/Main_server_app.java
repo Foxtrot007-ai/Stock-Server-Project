@@ -27,6 +27,7 @@ public class  Main_server_app{
 		private Add_item_app app_i;
 		
 		private Type_manager_app manager_t;
+		private Item_manager_app manager_i;
 		
 		private ButtonManager b_manager;
 		
@@ -45,6 +46,7 @@ public class  Main_server_app{
 	        app_i = new Add_item_app(types,items);
 	        
 	        manager_t = new Type_manager_app(types,items);
+	        manager_i = new Item_manager_app(items);
 	        
 	        
 			b1 = new JButton("Dodaj nowy typ");
@@ -114,7 +116,10 @@ public class  Main_server_app{
 				public void actionPerformed(ActionEvent evt) {
 					
 					
-					
+					manager_i.actionPerformed(evt);
+					b_manager = new ButtonManager(b1,b2,b3,b4,b5);
+					b_manager.select_operation(manager_i.get_info());
+					b_manager.start();
 
 				}
 			});
