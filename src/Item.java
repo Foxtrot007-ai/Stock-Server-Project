@@ -1,5 +1,10 @@
+import java.io.Serializable;
 
-public class Item {
+public class Item  implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4L;
 	private String id;
 	private String name;
 	private Type_of_package type;

@@ -1,9 +1,14 @@
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class List_of_types {
+public class List_of_types implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
 	private List<Type_of_package> types;
 	public List_of_types()
 	{
@@ -18,6 +23,7 @@ public class List_of_types {
 	public boolean delete_item(Type_of_package t)
 	{
 		int iter = 0;
+		//types.remove(t);
 		while(iter < types.size())
 		{
 			if(types.get(iter).equals(t))

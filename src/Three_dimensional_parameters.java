@@ -1,5 +1,10 @@
+import java.io.Serializable;
 
-public class Three_dimensional_parameters {
+public class Three_dimensional_parameters  implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private float x;
 	private float y;
 	private float z;

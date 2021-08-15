@@ -1,5 +1,10 @@
+import java.io.Serializable;
 
-public class Type_of_package {
+public class Type_of_package  implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3L;
 	private String name_of_type;
 	private Three_dimensional_parameters form; 
 	private float weight;

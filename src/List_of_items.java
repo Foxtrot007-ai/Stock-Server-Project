@@ -1,7 +1,13 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class List_of_items {
+public class List_of_items implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<Item> items;
 	public List_of_items()
 	{
