@@ -13,9 +13,10 @@ public class Saving_manager extends Thread{
 	private boolean previous;
 	private List_of_types types;
 	private List_of_items items;
-	public Saving_manager(BooleanWrapper b,List_of_types t ,List_of_items i)
+	public Saving_manager(List_of_types t ,List_of_items i)
 	{
-		is_closed = b;
+		is_closed = new BooleanWrapper(false);
+		previous = false;
 		types = t;
 		items = i;
 	}
@@ -24,12 +25,16 @@ public class Saving_manager extends Thread{
 	{
 		while(!is_closed.getValue())
 		{
-			if(!operation.getValue() && previous)
+			if(!operation.getValue())previous = true;
+			if(operation.getValue() && previous)
 			{
 				try {save_items();} catch (IOException e) {e.printStackTrace();}
 				try {save_types();} catch (IOException e) {e.printStackTrace();}
+				System.out.println("saved");
+				previous = false;
 			}
-			previous = operation.getValue();
+			
+			System.out.println("previous: " + previous + "\n");
 			try {this.sleep(100);} catch (InterruptedException e) {e.printStackTrace();}
 		}
 		return;
@@ -62,6 +67,13 @@ public class Saving_manager extends Thread{
 	public void select_operation(BooleanWrapper operation)
 	{
 		this.operation = operation;
+	}
+	
+	public void kill_process()
+	{
+		is_closed.setTrue();
+		System.out.println("killed");
+		
 	}
 
 }
