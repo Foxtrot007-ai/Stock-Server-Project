@@ -30,11 +30,8 @@ public class Saving_manager extends Thread{
 			{
 				try {save_items();} catch (IOException e) {e.printStackTrace();}
 				try {save_types();} catch (IOException e) {e.printStackTrace();}
-				System.out.println("saved");
 				previous = false;
 			}
-			
-			System.out.println("previous: " + previous + "\n");
 			try {this.sleep(100);} catch (InterruptedException e) {e.printStackTrace();}
 		}
 		return;

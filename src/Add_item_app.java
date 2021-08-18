@@ -96,7 +96,7 @@ public class  Add_item_app implements ActionListener{
 			b2.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent evt) {
-					System.out.println("Enter a number: " + types.get_name(0));
+					
 					if(!TF_name.getText().equals("")
 						&& !TF_info.getText().equals("")
 						&& !Lst_types.isSelectionEmpty())

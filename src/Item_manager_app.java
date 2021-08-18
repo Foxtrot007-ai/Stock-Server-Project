@@ -68,6 +68,7 @@ public class  Item_manager_app implements ActionListener{
 				public void actionPerformed(ActionEvent evt) {
 					 
 						String item_id = items.get_id(Lst_items.getSelectedIndex());
+						System.out.println(Lst_items.getSelectedIndex() + " " + items.get_name(Lst_items.getSelectedIndex()) + "\n");
 						if(items.delete_item(item_id))
 						{
 							f.setVisible(false);
