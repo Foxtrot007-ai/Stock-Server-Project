@@ -32,11 +32,7 @@ public class  Add_item_app implements ActionListener{
 		private Id_gen_item gen;
 		
 		private BooleanWrapper is_operation_finished;
-		/*public JPanel show_window()
-		{
-			f.setLocation(800, 200);
-			return f;
-		}*/
+		
 		public  Add_item_app(List_of_types t, List_of_items i)
 		{
 			items = i;
@@ -138,10 +134,7 @@ public class  Add_item_app implements ActionListener{
 			
 		}
 		
-		public BooleanWrapper get_info()
-		{
-			return is_operation_finished;
-		}
+		
 		
 		public void update_list()
 		{
@@ -154,17 +147,17 @@ public class  Add_item_app implements ActionListener{
 			
 		}
 		
-		/*public JFrame get_frame() full app concept
-		{
-			return f;						
-		}*/
-		
 		public void actionPerformed(ActionEvent e)
 		{
 			is_operation_finished.setFalse();
 			update_list();
 			f.setVisible(true);
 			
+		}
+		
+		public BooleanWrapper get_info()
+		{
+			return is_operation_finished;
 		}
 	
 	}

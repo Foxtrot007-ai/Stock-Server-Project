@@ -38,65 +38,85 @@ public class  Add_type_app implements ActionListener{
 		
 		
 		private List_of_types types;
-		/*public JPanel show_window()
-		{
-			f.setLocation(800, 200);
-			return f;
-		}*/
+		
 		public  Add_type_app(List_of_types t)
 		{
+			//set basics
 			types = t;
 			is_operation_finished = new BooleanWrapper();
-			
 			f = new JFrame();
-			JTextField_height = 20;
-			JTextField_width = 150;
+			
+			//set swing ui
+			J_y = 70;
+			set_all_JLabels();
+			set_all_JTextFields();
+			set_button_1();
+			set_button_2();
+			set_close_button();
+	
+			//adding components to JFrame
+			f.add(b1);
+			f.add(b2);    
+			
+			f.add(L_name);
+			f.add(L_weight);
+			f.add(L_x);
+			f.add(L_y);
+			f.add(L_z);
+			
+			f.add(TF_name);
+			f.add(TF_weight);
+			f.add(TF_x);
+			f.add(TF_y);
+			f.add(TF_z);
+			f.setSize(300,350);
+			f.setLayout(null); 
+			f.setVisible(false);
+			
+		}
+		
+		private JLabel create_JLabel(int y, int x, String text)
+		{
+			JLabel temp = new JLabel();
+			temp.setBounds(y,x, JLabel_width, JLabel_height);
+			temp.setText("Enter " + text +": ");
+			return temp;
+			
+		}
+		
+		private JTextField create_JTextField(int y, int x)
+		{
+			JTextField temp = new JTextField();
+			temp.setBounds(y,x, JTextField_width, JTextField_height);
+			temp.setEditable(true);
+			return temp;
+			
+		}
+		
+		private void set_all_JLabels()
+		{
 			JLabel_height = 20;
 			JLabel_width = 100;
-			
-			J_y = 70;
-			
-			L_name = new JLabel();  
-			L_name.setBounds(J_y,5, JLabel_width, JLabel_height);
-			L_name.setText("Enter name: ");
-			
-			TF_name = new JTextField();  
-			TF_name.setBounds(J_y,30, JTextField_width, JTextField_height);  
-			TF_name.setEditable(true);
-			
-			L_x = new JLabel();  
-			L_x.setBounds(J_y,55, JLabel_width, JLabel_height);  
-			L_x.setText("Enter x: ");
-			
-			TF_x = new JTextField();  
-			TF_x.setBounds(J_y,80, JTextField_width, JTextField_height);  
-			TF_x.setEditable(true);
-			
-			L_y = new JLabel();  
-			L_y.setBounds(J_y,105, JLabel_width, JLabel_height);
-			L_y.setText("Enter y: ");
-			
-			TF_y = new JTextField();  
-			TF_y.setBounds(J_y,130, JTextField_width, JTextField_height);  
-			TF_y.setEditable(true);
-			
-			L_z = new JLabel();  
-			L_z.setBounds(J_y,155, JLabel_width, JLabel_height);
-			L_z.setText("Enter z: ");
-			
-			
-			TF_z = new JTextField();  
-			TF_z.setBounds(J_y,180, JTextField_width, JTextField_height);  
-			TF_z.setEditable(true);
-			
-			L_weight = new JLabel();  
-			L_weight.setBounds(J_y,205, JLabel_width, JLabel_height);
-			L_weight.setText("Enter weight: ");
-			
-			TF_weight = new JTextField();  
-			TF_weight.setBounds(J_y,230, JTextField_width, JTextField_height);  
-			TF_weight.setEditable(true);
-		    
+			L_name = create_JLabel(J_y,5,"name");
+			L_x = create_JLabel(J_y,55,"x");
+			L_y = create_JLabel(J_y,105,"y");
+			L_z = create_JLabel(J_y,155,"z");
+			L_weight = create_JLabel(J_y,205,"weight");
+		}
+		
+		private void set_all_JTextFields()
+		{
+			JTextField_height = 20;
+			JTextField_width = 150;
+			TF_name = create_JTextField(J_y, 30);
+			TF_x = create_JTextField(J_y, 80);
+			TF_y = create_JTextField(J_y, 130);
+			TF_z = create_JTextField(J_y, 180);
+			TF_weight = create_JTextField(J_y, 230);
+		}
+
+		private void set_button_1()
+		{
 			b1 = new JButton("Anuluj");
 			b1.setBounds(55,265,75, 30);
 			b1.setEnabled(true);
@@ -109,7 +129,10 @@ public class  Add_type_app implements ActionListener{
 							
 				}
 			});
-			
+		}
+		
+		private void set_button_2()
+		{
 			b2 = new JButton("Dodaj");
 			b2.setBounds(155,265,75, 30);
 			b2.setEnabled(true);
@@ -135,18 +158,17 @@ public class  Add_type_app implements ActionListener{
 							types.add_type(temp);
 							is_operation_finished.setTrue();
 							f.setVisible(false);
-						} else JOptionPane.showMessageDialog(f, "This type already exists.");
-						
-						
+						} else JOptionPane.showMessageDialog(f, "This type already exists.");				
 						//System.out.println(types.get_name(0));
 					}else {
 						JOptionPane.showMessageDialog(f, "Some fields are empty.");
-					}
-					
-					
-					
+					}			
 				}
 			});
+		}
+		
+		private void set_close_button()
+		{
 			f.addWindowListener(new java.awt.event.WindowAdapter() {
 			    @Override
 			    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -154,33 +176,6 @@ public class  Add_type_app implements ActionListener{
 					is_operation_finished.setTrue();
 			    }
 			});
-			
-			f.add(b1);
-			f.add(b2);    
-			
-			f.add(L_name);
-			f.add(L_weight);
-			f.add(L_x);
-			f.add(L_y);
-			f.add(L_z);
-			
-			f.add(TF_name);
-			f.add(TF_weight);
-			f.add(TF_x);
-			f.add(TF_y);
-			f.add(TF_z);
-			f.setSize(300,350);
-			f.setLayout(null); 
-			f.setVisible(false);
-			
-		}
-		
-		
-		
-		public JFrame get_frame()
-		{
-			return f;
-						
 		}
 		
 		public void actionPerformed(ActionEvent e)
