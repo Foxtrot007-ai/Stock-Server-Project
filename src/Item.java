@@ -49,6 +49,10 @@ public class Item  implements Serializable{
 		return id;
 	}
 	
+	public String get_info()
+	{
+		return info;
+	}
 	public String get_name()
 	{
 		return name;
