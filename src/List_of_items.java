@@ -50,6 +50,11 @@ public class List_of_items implements Serializable{
 		return items.get(i).get_name();
 	}
 	
+	public Item get_item(int i)
+	{
+		return items.get(i);
+	}
+	
 	public boolean check_if_type_is_used(Type_of_package t)
 	{
 		for(int i = 0; i < items.size(); i++)

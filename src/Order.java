@@ -3,6 +3,8 @@
 	import java.io.Serializable;
 	import java.util.ArrayList;
 	import java.util.List;
+import java.util.Random;
+	
 
 
 
@@ -11,15 +13,19 @@
 		
 		private static final long serialVersionUID = 5L;
 		private List<Pair<Integer, Item>> items;
+		private String id;
 		private BooleanWrapper taken;
 		private int current_item;
 		private BooleanWrapper completed;
-		public Order()
+		private Id_gen_item gen;
+		public Order(String id)
 		{
+			gen = new Id_gen_item();
 			items = new ArrayList<Pair<Integer, Item>>();
 			taken = new BooleanWrapper(false);
 			completed = new BooleanWrapper(false);
 			current_item = 0;
+			this.id = id;
 		}
 			
 		public boolean add_item_to_request(Integer i,Item o)
@@ -37,9 +43,15 @@
 			}else return false;
 			
 		}
+		public boolean is_taken()
+		{
+			return taken.getValue();
+		}
 		
-		
-		
+		public boolean in_progress()
+		{
+			return current_item > 0;
+		}
 		
 		public boolean start_completing_the_order()
 		{
@@ -72,6 +84,29 @@
 		{
 			return items.get(current_item);
 		}
+		
+		public String get_id()
+		{
+			return id;
+		}
+		
+		public Order get_random_order(List_of_items items)
+		{
+			Random rand = new Random();
+			int n = rand.nextInt(5);
+			Order temp = new Order(gen.next_id());
+			
+			for(int i = 0; i < n; i++)
+			{
+				int x = rand.nextInt(50);
+				int y = rand.nextInt(5);
+				temp.add_item_to_request(Integer.valueOf(x), items.get_item(y));
+			}
+			
+			return temp;
+			
+		}
+		
 
 	}
 
